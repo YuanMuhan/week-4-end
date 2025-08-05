@@ -4,8 +4,23 @@ import AboutView from '../views/AboutView.vue'
 import LoginView from '../views/LoginView.vue'
 import AccessDeniedView from '../views/AccessDeniedView.vue'
 import { useAuth } from '../composables/useAuth'
+import FirebaseSigninView from '@/views/FirebaseSigninView.vue'
+import FirebaseRegisterView from '@/views/FirebaseRegisterView.vue'
+import AddBookView from '../views/AddBookVue.vue'
+import WeatherView from '../views/WeatherView.vue'
+import CountBookAPI from '@/views/CountBookAPI.vue'
 
 const routes = [
+  {
+    path: '/FireLogin',
+    name: 'FireLogin',
+    component: FirebaseSigninView
+  },
+  {
+    path: '/FireRegister',
+    name: 'FireRegister',
+    component: FirebaseRegisterView
+  },
   {
     path: '/',
     name: 'Home',
@@ -16,6 +31,21 @@ const routes = [
     name: 'About',
     component: AboutView,
     meta: { requiresAuth: true } // This route requires authentication
+  },
+  {
+    path: '/CountBookAPI',
+    name: 'CountBookAPI',
+    component: CountBookAPI
+  },
+  {
+    path: '/addbook',
+    name: 'AddBook',
+    component: AddBookView
+  },
+  {
+    path: '/WeatherCheck',
+    name: 'GetWeather',
+    component: WeatherView
   },
   {
     path: '/login',
@@ -31,7 +61,7 @@ const routes = [
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     redirect: '/'
-  }
+  },
 ]
 
 const router = createRouter({
